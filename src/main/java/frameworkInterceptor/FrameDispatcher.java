@@ -1,9 +1,6 @@
-package dispatcher;
+package frameworkInterceptor;
 
 import java.util.Vector;
-
-import interceptorRequest.TestFrameRequestInterceptor;
-import unmarshaledRequest.FrameworkUnmarshled;
 
 public class FrameDispatcher implements TestFrameRequestInterceptor {
 
@@ -14,23 +11,21 @@ public class FrameDispatcher implements TestFrameRequestInterceptor {
 	private FrameDispatcher() {
 		// private constructor
 	}
-	 public static FrameDispatcher getInstance() 
-	  { 
-	    if (instance == null)  
-	    { 
-	      //synchronized block to remove overhead 
-	      synchronized (FrameDispatcher.class) 
-	      { 
-	        if(instance==null) 
-	        { 
-	          // if instance is null, initialize 
-	          instance = new FrameDispatcher(); 
-	        } 
-	        
-	      } 
-	    } 
-	    return instance; 
-	  } 
+
+	public static FrameDispatcher getInstance() {
+		if (instance == null) {
+			// synchronized block to remove overhead
+			synchronized (FrameDispatcher.class) {
+				if (instance == null) {
+					// if instance is null, initialize
+					instance = new FrameDispatcher();
+				}
+
+			}
+		}
+		return instance;
+	}
+
 	Vector<TestFrameRequestInterceptor> intercepter_ = new Vector<TestFrameRequestInterceptor>();
 
 	synchronized public void registerFrameRequestInterceptor(TestFrameRequestInterceptor interceptor) {
@@ -47,30 +42,36 @@ public class FrameDispatcher implements TestFrameRequestInterceptor {
 			intercepter_ = (Vector<TestFrameRequestInterceptor>) intercepter_.clone();
 		}
 		for (int i = 0; i < intercepter_.size(); i++) {
-			TestFrameRequestInterceptor requestInterceptor = (TestFrameRequestInterceptor) intercepter_.elementAt(i);
-			requestInterceptor.onPreFrameworkRequest(context);
-			requestInterceptor.onTest();
-			requestInterceptor.onPostFrameworkRequest();
+			TestFrameRequestInterceptor myRequestInterceptor = (TestFrameRequestInterceptor) intercepter_.elementAt(i);
+			myRequestInterceptor.intiateLogs();
+			myRequestInterceptor.intiateReports();
+			myRequestInterceptor.intiateFrameRequest(context);
+			myRequestInterceptor.onPostFrameworkRequest();
 		}
-	}
-
-	
-	
-	@Override
-	public void onPreFrameworkRequest(FrameworkUnmarshled context) {
-		System.out.println("in pre dispatcher");
 	}
 
 	@Override
 	public void onPostFrameworkRequest() {
 		// TODO Auto-generated method stub
-		System.out.println("in Post framework dispatcher");
+
 	}
+
 	@Override
-	public void onTest() {
+	public void intiateLogs() {
 		// TODO Auto-generated method stub
-		System.out.println("in test dispatcher");
-		
+
+	}
+
+	@Override
+	public void intiateReports() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void intiateFrameRequest(FrameworkUnmarshled context) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

@@ -1,13 +1,16 @@
-package implementation;
+package frameworkInterceptor;
 
-import unmarshaledRequest.FrameworkUnmarshled;
+import globalUtilities.GlobalVariables.browserName;
+import globalUtilities.GlobalVariables.environmentName;
+import globalUtilities.GlobalVariables.systemType;
+import globalUtilities.GlobalVariables.testingType;
 
 public class FrameworkImplementation implements FrameworkUnmarshled {
 	public String testProject;
-	public String testEnvironment;
-	public String testType;
-	public String testSystem;
-	public String testBrowser;
+	public environmentName testEnvironment;
+	public testingType testType;
+	public systemType testSystem;
+	public browserName testBrowser;
 	public String testFeature;
 	public String testngXML;
 
@@ -22,42 +25,42 @@ public class FrameworkImplementation implements FrameworkUnmarshled {
 	}
 
 	@Override
-	public String getTestEnvironment() {
+	public environmentName getTestEnvironment() {
 		return testEnvironment;
 	}
 
 	@Override
-	public void setTestEnvironment(String testEnvironment) {
+	public void setTestEnvironment(environmentName testEnvironment) {
 		this.testEnvironment = testEnvironment;
 	}
 
 	@Override
-	public String getTestType() {
+	public testingType getTestType() {
 		return testType;
 	}
 
 	@Override
-	public void setTestType(String testType) {
+	public void setTestType(testingType testType) {
 		this.testType = testType;
 	}
 
 	@Override
-	public String getTestSystem() {
+	public systemType getTestSystem() {
 		return testSystem;
 	}
 
 	@Override
-	public void setTestSystem(String testSystem) {
+	public void setTestSystem(systemType testSystem) {
 		this.testSystem = testSystem;
 	}
 
 	@Override
-	public String getTestBrowser() {
+	public browserName getTestBrowser() {
 		return testBrowser;
 	}
 
 	@Override
-	public void setTestBrowser(String testBrowser) {
+	public void setTestBrowser(browserName testBrowser) {
 		this.testBrowser = testBrowser;
 	}
 
