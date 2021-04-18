@@ -1,49 +1,52 @@
 package testInititor;
 
 import java.awt.Frame;
+import java.io.File;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import frameworkInterceptor.FrameDispatcher;
-import frameworkInterceptor.FrameworkUnmarshled;
-import frameworkInterceptor.TestFrameRequestInterceptor;
-import globalUtilities.GlobalVariables;
-import globalUtilities.GlobalVariables.frameworkName;
-import testFactory.TestType;
-import testFactory.TestTypeFactory;
+import frameVisitor.FrameSetupVisitorImp;
+import frame_factory.*;
+import frameworkInterceptor.*;
+import reporting.ExtentReportManagerImp;
+import util.GlobalVariables;
 
-public class TestDriver {
+public class TestDriver extends GlobalVariables {
 
-	public void testInitiator(FrameworkUnmarshled context, frameworkName frame) {
+	public void testInitiator(FrameworkUnmarshled context) {
 		TestFrameRequestInterceptor myFrameInterceptor = new TestFrameRequestInterceptor() {
+			ExtentReportManagerImp myReportingManager = new ExtentReportManagerImp();
 
-			@Override
+			public void onPreInit() {
+				frameVisitor.Frame frame = new frameVisitor.Frame();
+				frame.frameAcceptance(new FrameSetupVisitorImp());
+			}
+
 			public void intiateLogs() {
-				// TODO Auto-generated method stub
-				GlobalVariables.log = Logger.getLogger(Frame.class);
-				PropertyConfigurator.configure(GlobalVariables.fileLog4j);
-				GlobalVariables.log.info("message");
+
+				log = Logger.getLogger(Frame.class);
+				PropertyConfigurator.configure(pathLog4jProperties);
+				log.info("message");
 			}
 
-			@Override
-			public void intiateReports() {
-				// TODO Auto-generated method stub
+			public void intiateReports(FrameworkUnmarshled context) {
 
+				myReportingManager.onStart(new File(pathFileExtentReportHTML), context.getTestProject(),
+						context.getTestFeature());
 			}
 
-			@Override
-			public void intiateFrameRequest(FrameworkUnmarshled context) {
-				// TODO Auto-generated method stub
-				TestTypeFactory myTestFactory = new TestTypeFactory();
-				TestType myTestType = myTestFactory.getTestingType(context.getTestType());
-				myTestType.selectTestingType(context);
+			public void intiateFrame(FrameworkUnmarshled context) {
+				log.info("Initiate FrameType");
+				FrameTypeFactory myFrameFactory = new FrameTypeFactory();
+				FrameType myFrameType = myFrameFactory.getFrameType(context.getFrameworkName());
+				myFrameType.selectFrameType(context);
 			}
 
-			@Override
 			public void onPostFrameworkRequest() {
-				// TODO Auto-generated method stub
-				System.out.println("post");
+				myReportingManager.flushReport();
+				seleniumDriver.close();
+				log.info("Execution Complete");
 			}
 
 		};

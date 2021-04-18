@@ -1,87 +1,94 @@
 package frameworkInterceptor;
 
-import globalUtilities.GlobalVariables.browserName;
-import globalUtilities.GlobalVariables.environmentName;
-import globalUtilities.GlobalVariables.systemType;
-import globalUtilities.GlobalVariables.testingType;
+import util.GlobalVariables._browserName;
+import util.GlobalVariables._environmentName;
+import util.GlobalVariables._frameworkName;
+import util.GlobalVariables._systemType;
+import util.GlobalVariables._testingFrame;
+import util.GlobalVariables._testingType;
 
 public class FrameworkImplementation implements FrameworkUnmarshled {
-	public String testProject;
-	public environmentName testEnvironment;
-	public testingType testType;
-	public systemType testSystem;
-	public browserName testBrowser;
-	public String testFeature;
-	public String testngXML;
+	String testProject;
+	_environmentName testEnvironment;
+	_testingType testType;
+	_systemType testSystem;
+	_browserName testBrowser;
+	String testFeature;
+	String testngXML;
+	_frameworkName frameworkName;
+	_testingFrame testingFrame;
 
-	@Override
 	public String getTestProject() {
 		return testProject;
 	}
 
-	@Override
 	public void setTestProject(String testProject) {
 		this.testProject = testProject;
 	}
 
-	@Override
-	public environmentName getTestEnvironment() {
+	public _environmentName getTestEnvironment() {
 		return testEnvironment;
 	}
 
-	@Override
-	public void setTestEnvironment(environmentName testEnvironment) {
+	public void setTestEnvironment(_environmentName testEnvironment) {
 		this.testEnvironment = testEnvironment;
 	}
 
-	@Override
-	public testingType getTestType() {
+	public _testingType getTestType() {
 		return testType;
 	}
 
-	@Override
-	public void setTestType(testingType testType) {
+	public void setTestType(_testingType testType) {
 		this.testType = testType;
 	}
 
-	@Override
-	public systemType getTestSystem() {
+	public _systemType getTestSystem() {
 		return testSystem;
 	}
 
-	@Override
-	public void setTestSystem(systemType testSystem) {
+	public void setTestSystem(_systemType testSystem) {
 		this.testSystem = testSystem;
 	}
 
-	@Override
-	public browserName getTestBrowser() {
+	public _browserName getTestBrowser() {
 		return testBrowser;
 	}
 
-	@Override
-	public void setTestBrowser(browserName testBrowser) {
+	public void setTestBrowser(_browserName testBrowser) {
 		this.testBrowser = testBrowser;
 	}
 
-	@Override
 	public String getTestFeature() {
 		return testFeature;
 	}
 
-	@Override
 	public void setTestFeature(String testFeature) {
 		this.testFeature = testFeature;
 	}
 
-	@Override
 	public String getTestngXML() {
 		return testngXML;
 	}
 
-	@Override
 	public void setTestngXML(String testngXML) {
 		this.testngXML = testngXML;
 
 	}
+
+	public void setFrameworkName(_frameworkName frameworkName) {
+		this.frameworkName = frameworkName;
+	}
+
+	public _frameworkName getFrameworkName() {
+		return frameworkName;
+	}
+
+	public _testingFrame getTestTypeFrame() {
+		return testingFrame;
+	}
+
+	public void setTestTypeFrame(_testingFrame testingFrame) {
+		this.testingFrame=testingFrame;
+	}
+
 }
