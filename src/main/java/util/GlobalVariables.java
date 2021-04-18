@@ -10,6 +10,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
+
+
 public class GlobalVariables {
 
 	public enum _environmentName {
@@ -46,15 +48,15 @@ public class GlobalVariables {
 
 	public static ExtentReports reports;
 	public static ExtentTest testInfo;
-	public static ExtentTest scenarioInfo;
+	public static ExtentTest stepInfo;
+	public static String _scenario;
 	public static ExtentSparkReporter sparkReport;
 	Map<String, ExtentTest> feature = new HashMap<String, ExtentTest>();
 	public static String _actualResult;
 	static String moduleName;
-	public String actualResult = null;
 
 	public static Logger log;
-	private static final String seprator = System.getProperty("file.separator");
+	public static final String seprator = System.getProperty("file.separator");
 	private static final String dirPath = System.getProperty("user.dir");
 	public static final String dirTestResource = dirPath + seprator + "src" + seprator + "test" + seprator + "resources"
 			+ seprator;
@@ -64,5 +66,5 @@ public class GlobalVariables {
 	public static final String pathFileLog4jReportHTML = pathDirOutput + "logsHTML.html";
 	public static final String pathFileExtentReportHTML = pathDirOutput + "TestingReport.html";
 	public static WebDriver seleniumDriver;
-	public static final String pathScreenshot = pathDirOutput + "screenshot";
+	public static final String _pathScreenshot = pathDirOutput + "screenshot"+seprator;
 }

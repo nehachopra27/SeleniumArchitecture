@@ -13,45 +13,46 @@ import util.GlobalVariables;
 
 public class SeleniumActionsImp extends GlobalVariables implements SeleniumActions {
 
-	ConfigureElement objConfigureElement=new ConfigElementImp();
-	public int getURL(String url) {
+	ConfigureElement objConfigureElement = new ConfigElementImp();
+
+	public boolean getURL(String url) {
 		try {
 			seleniumDriver.get(url);
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "not able to get url" + url);
-			return 0;
+			return false;
 		}
 
 	}
 
-	public int validateTitle(String title) {
+	public boolean validateTitle(String title) {
 		try {
 			if (seleniumDriver.getTitle().equals(title)) {
-				return 1;
+				return true;
 			} else {
 				log.error("title mismatch " + title);
-				return 0;
+				return false;
 			}
 		} catch (Exception e) {
 			errorLog(e, "not able to map the title" + title);
-			return 0;
+			return false;
 		}
 	}
 
-	public int waituntilElementDisplayed(By locator, int timeOutInSeconds) {
+	public boolean waituntilElementDisplayed(By locator, int timeOutInSeconds) {
 		try {
 			WebDriverWait wait = new WebDriverWait(seleniumDriver, timeOutInSeconds);
 			wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "waituntilElementDisplayed time out");
-			return 0;
+			return false;
 		}
 	}
 
-	public int waituntilElementDisplayed(WebElement element, int timeOutInSeconds) {
-		return 0;
+	public boolean waituntilElementDisplayed(WebElement element, int timeOutInSeconds) {
+		return true;
 //		try {
 //			WebDriverWait wait = new WebDriverWait(seleniumDriver, timeOutInSeconds);
 //			ExpectedCondition<Boolean> elementIsDisplayed = arg0 -> element.isDisplayed();
@@ -64,97 +65,97 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 //		}
 	}
 
-	public int moveToElement(WebElement element) {
+	public boolean moveToElement(WebElement element) {
 		try {
 			Actions act = new Actions(seleniumDriver);
 			act.moveToElement(element).build().perform();
-			return 0;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "not able to move till element");
-			return 0;
+			return false;
 		}
 	}
 
-	public int elementIsDislayed(By locator, int timeOutInSeconds) {
+	public boolean elementIsDislayed(By locator, int timeOutInSeconds) {
 		try {
 			waituntilElementDisplayed(locator, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
 			moveToElement(element);
 			if (element.isDisplayed())
-				return 1;
+				return true;
 			else
-				return 0;
+				return false;
 		} catch (Exception e) {
 			errorLog(e, "not able to validate display element");
-			return 0;
+			return false;
 		}
 	}
 
-	public int elementIsEnable(By locator, int timeOutInSeconds) {
+	public boolean elementIsEnable(By locator, int timeOutInSeconds) {
 		try {
 			waituntilElementDisplayed(locator, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
 			moveToElement(element);
 			if (element.isEnabled())
-				return 1;
+				return true;
 			else
-				return 0;
+				return false;
 		} catch (Exception e) {
 			errorLog(e, "not able to validate display is enable");
-			return 0;
+			return false;
 		}
 	}
 
-	public int elementIsNotEnable(By locator, int timeOutInSeconds) {
+	public boolean elementIsNotEnable(By locator, int timeOutInSeconds) {
 		try {
 			waituntilElementDisplayed(locator, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
 			moveToElement(element);
 			if (!element.isEnabled())
-				return 1;
+				return true;
 			else
-				return 0;
+				return false;
 		} catch (Exception e) {
 			errorLog(e, "not able to validate display is not enable");
-			return 0;
+			return false;
 		}
 	}
 
-	public int click(By locator, int timeOutInSeconds) {
+	public boolean click(By locator, int timeOutInSeconds) {
 		try {
 			WebElement element = objConfigureElement.getElement(locator);
 			click(element, timeOutInSeconds);
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "not able to click on element");
-			return 0;
+			return false;
 		}
 	}
 
-	public int click(WebElement element, int timeOutInSeconds) {
+	public boolean click(WebElement element, int timeOutInSeconds) {
 		try {
 			waituntilElementDisplayed(element, timeOutInSeconds);
 			elementClickable(element, timeOutInSeconds);
 			moveToElement(element);
 			element.click();
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "not able to click on element");
-			return 0;
+			return false;
 		}
 	}
 
-	public int wait(int timeOutInSeconds) {
+	public boolean wait(int timeOutInSeconds) {
 		try {
 			Thread.sleep(timeOutInSeconds);
+			return true;
 		} catch (InterruptedException e) {
 			errorLog(e, "sleep wait is not working");
-			return 0;
+			return false;
 		}
-		return 0;
 	}
 
-	public int sendKeyElement(By locator, String txt, int timeOutInSeconds) {
+	public boolean sendKeyElement(By locator, String txt, int timeOutInSeconds) {
 		try {
 			waituntilElementDisplayed(locator, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
@@ -162,32 +163,46 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 			element.sendKeys(Keys.CONTROL + "a");
 			element.sendKeys(Keys.BACK_SPACE);
 			element.sendKeys(txt);
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "not able to send key");
-			return 0;
+			return false;
 		}
 	}
 
-	public int elementClickable(By locator, int timeOutInSeconds) {
+	public boolean sendKeyElement(WebElement element, String txt, int timeOutInSeconds) {
+		try {
+			waituntilElementDisplayed(element, timeOutInSeconds);
+			moveToElement(element);
+			element.sendKeys(Keys.CONTROL + "a");
+			element.sendKeys(Keys.BACK_SPACE);
+			element.sendKeys(txt);
+			return true;
+		} catch (Exception e) {
+			errorLog(e, "not able to send key");
+			return false;
+		}
+	}
+
+	public boolean elementClickable(By locator, int timeOutInSeconds) {
 		try {
 			WebDriverWait wait = new WebDriverWait(seleniumDriver, timeOutInSeconds);
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "element not clickable");
-			return 0;
+			return false;
 		}
 	}
 
-	public int elementClickable(WebElement element, int timeOutInSeconds) {
+	public boolean elementClickable(WebElement element, int timeOutInSeconds) {
 		try {
 			WebDriverWait wait = new WebDriverWait(seleniumDriver, timeOutInSeconds);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "element not clickable");
-			return 0;
+			return false;
 		}
 	}
 
@@ -204,49 +219,68 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 
 	}
 
-	public int waitUntilElementNotVisable(By locator, int timeOutInSeconds) {
+	public String getText(WebElement element, int timeOutInSeconds) {
+		try {
+			waituntilElementDisplayed(element, timeOutInSeconds);
+			moveToElement(element);
+			return element.getText();
+		} catch (Exception e) {
+			errorLog(e, "not able to get text");
+			return null;
+		}
+	}
+
+	public boolean waitUntilElementNotVisable(By locator, int timeOutInSeconds) {
 		try {
 			WebDriverWait wait = new WebDriverWait(seleniumDriver, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
 			wait.until(ExpectedConditions.visibilityOf(element));
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "element not visable");
-			return 0;
+			return false;
 		}
 	}
 
-	public int waitUntilElementVisable(By locator, int timeOutInSeconds) {
+	public boolean waitUntilElementVisable(By locator, int timeOutInSeconds) {
 
 		try {
 			WebDriverWait wait = new WebDriverWait(seleniumDriver, timeOutInSeconds);
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "element not visable");
-			return 0;
+			return false;
 		}
 	}
 
-	public int validateTxt(String source, String target) {
+	public boolean validateTxt(String source, String target) {
 		if (source.equals(target)) {
-			return 1;
+			return true;
 		} else {
-			return 0;
+			return false;
 		}
 	}
 
-	public int closeDriver() {
+	public boolean validateTestExistOnPage(String txt) {
+		if(seleniumDriver.getPageSource().contains(txt))
+			return true;
+		else
+			return false;
+	}
+	
+	
+	public boolean closeDriver() {
 		try {
 			if (null != seleniumDriver) {
 				seleniumDriver.close();
-				return 1;
+				return true;
 			} else {
-				return 0;
+				return false;
 			}
 		} catch (Exception e) {
 			errorLog(e, "not able to close driver");
-			return 0;
+			return false;
 		}
 	}
 
@@ -254,27 +288,27 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 		System.exit(0);
 	}
 
-	public int quitDriver() {
+	public boolean quitDriver() {
 		try {
 			if (null != seleniumDriver) {
 				seleniumDriver.quit();
-				return 1;
+				return true;
 			} else {
-				return 0;
+				return false;
 			}
 		} catch (Exception e) {
 			errorLog(e, "not able to quit driver");
-			return 0;
+			return false;
 		}
 	}
 
-	public int refreshPage() {
+	public boolean refreshPage() {
 		try {
 			seleniumDriver.navigate().refresh();
-			return 1;
+			return true;
 		} catch (Exception e) {
 			errorLog(e, "not able to refresh page");
-			return 0;
+			return false;
 		}
 	}
 
@@ -284,4 +318,5 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 	}
 
 	
+
 }
