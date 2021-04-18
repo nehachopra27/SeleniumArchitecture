@@ -1,24 +1,32 @@
 package frameworkInterceptor;
 
-import globalUtilities.GlobalVariables.browserName;
-import globalUtilities.GlobalVariables.environmentName;
-import globalUtilities.GlobalVariables.systemType;
-import globalUtilities.GlobalVariables.testingType;
+
+import util.GlobalVariables._browserName;
+import util.GlobalVariables._environmentName;
+import util.GlobalVariables._frameworkName;
+import util.GlobalVariables._systemType;
+import util.GlobalVariables._testingFrame;
+import util.GlobalVariables._testingType;
 
 public interface FrameworkUnmarshled {
 
 	public String getTestProject();
 	public void setTestProject(String testProject);
-	public environmentName getTestEnvironment();
-	public void setTestEnvironment(environmentName testEnvironment);
-	public testingType getTestType();
-	public void setTestType(testingType testType);
-	public systemType getTestSystem();
-	public void setTestSystem(systemType testSystem);
-	public browserName getTestBrowser();
-	public void setTestBrowser(browserName testBrowser);
+	public _environmentName getTestEnvironment();
+	public void setTestEnvironment(_environmentName testEnvironment);
+	public _testingType getTestType();
+	public void setTestType(_testingType testType);
+	public _testingFrame getTestTypeFrame();
+	public void setTestTypeFrame(_testingFrame testingFrame);
+	public _systemType getTestSystem();
+	public void setTestSystem(_systemType testSystem);
+	public _browserName getTestBrowser();
+	public void setTestBrowser(_browserName testBrowser);
 	public String getTestFeature();
 	public void setTestFeature(String testFeature);
 	public String getTestngXML();
 	public void setTestngXML(String testngXML);
+	public _frameworkName getFrameworkName();
+	public void setFrameworkName(_frameworkName frameworkName);
+
 }
