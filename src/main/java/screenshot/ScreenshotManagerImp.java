@@ -15,7 +15,6 @@ import util.GlobalVariables;
 
 public class ScreenshotManagerImp extends GlobalVariables implements ScreenshotManager {
 
-	
 	public void takeScreenshot(String pathScreenshot, String fileName) {
 		try {
 			File src = ((TakesScreenshot) seleniumDriver).getScreenshotAs(OutputType.FILE);
@@ -30,5 +29,4 @@ public class ScreenshotManagerImp extends GlobalVariables implements ScreenshotM
 
 	}
 
-	
 }
