@@ -1,2 +1,2 @@
 # SeleniumArchitecture
-CS5722 Architecture Project
+CS5722 Architecture Project Selenium
