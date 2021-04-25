@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-13T21:51:01 IST" name="Suite" finished-at="2021-04-13T21:51:20 IST" duration-ms="18757">
+  <suite started-at="2021-04-17T23:37:05 IST" name="Suite" finished-at="2021-04-17T23:37:32 IST" duration-ms="27134">
     <groups>
     </groups>
-    <test started-at="2021-04-13T21:51:01 IST" name="testng" finished-at="2021-04-13T21:51:20 IST" duration-ms="18757">
-      <class name="sample.Validate_login_functionality">
-        <test-method signature="Precondition_to_validate_login_functionality()[pri:1, instance:sample.Validate_login_functionality@44f9779c]" started-at="2021-04-13T21:51:01 IST" name="Precondition_to_validate_login_functionality" finished-at="2021-04-13T21:51:08 IST" duration-ms="6997" status="PASS">
+    <test started-at="2021-04-17T23:37:05 IST" name="testng" finished-at="2021-04-17T23:37:32 IST" duration-ms="27134">
+      <class name="client.web.ui.testng.Validate_login_functionality">
+        <test-method signature="Precondition_to_validate_login_functionality()[pri:1, instance:client.web.ui.testng.Validate_login_functionality@5f5b5ca4]" started-at="2021-04-17T23:37:05 IST" name="Precondition_to_validate_login_functionality" finished-at="2021-04-17T23:37:17 IST" duration-ms="12119" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Precondition_to_validate_login_functionality -->
-        <test-method signature="validate_login_with_incorrect_username()[pri:2, instance:sample.Validate_login_functionality@44f9779c]" started-at="2021-04-13T21:51:08 IST" name="validate_login_with_incorrect_username" finished-at="2021-04-13T21:51:13 IST" duration-ms="5225" status="PASS">
+        <test-method signature="validate_login_with_incorrect_username()[pri:2, instance:client.web.ui.testng.Validate_login_functionality@5f5b5ca4]" started-at="2021-04-17T23:37:17 IST" name="validate_login_with_incorrect_username" finished-at="2021-04-17T23:37:26 IST" duration-ms="8653" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validate_login_with_incorrect_username -->
-        <test-method signature="validate_login_with_incorrect_password()[pri:3, instance:sample.Validate_login_functionality@44f9779c]" started-at="2021-04-13T21:51:13 IST" name="validate_login_with_incorrect_password" finished-at="2021-04-13T21:51:16 IST" duration-ms="3037" status="PASS">
+        <test-method signature="validate_login_with_incorrect_password()[pri:3, instance:client.web.ui.testng.Validate_login_functionality@5f5b5ca4]" started-at="2021-04-17T23:37:26 IST" name="validate_login_with_incorrect_password" finished-at="2021-04-17T23:37:29 IST" duration-ms="2789" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validate_login_with_incorrect_password -->
-        <test-method signature="validate_login_with_correct_credentials()[pri:4, instance:sample.Validate_login_functionality@44f9779c]" started-at="2021-04-13T21:51:16 IST" name="validate_login_with_correct_credentials" finished-at="2021-04-13T21:51:20 IST" duration-ms="3357" status="PASS">
+        <test-method signature="validate_login_with_correct_credentials()[pri:4, instance:client.web.ui.testng.Validate_login_functionality@5f5b5ca4]" started-at="2021-04-17T23:37:29 IST" name="validate_login_with_correct_credentials" finished-at="2021-04-17T23:37:32 IST" duration-ms="3269" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validate_login_with_correct_credentials -->
-      </class> <!-- sample.Validate_login_functionality -->
+      </class> <!-- client.web.ui.testng.Validate_login_functionality -->
     </test> <!-- testng -->
   </suite> <!-- Suite -->
 </testng-results>
