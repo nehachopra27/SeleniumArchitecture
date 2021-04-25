@@ -5,6 +5,11 @@
 	<groupId>UL.Testing.Project</groupId>
 	<artifactId>UL.Testing.Project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+ 	<sonar.projectKey>nehachopra27_SeleniumArchitecture</sonar.projectKey>
+  	<sonar.organization>nehachopra27</sonar.organization>
+ 	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
