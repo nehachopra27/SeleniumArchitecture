@@ -2,6 +2,8 @@ package client.rest.restassured;
 
 import java.io.IOException;
 
+import org.testng.annotations.Test;
+
 import testengine.frame.interceptor.FrameworkImplementation;
 import testengine.frame.interceptor.FrameworkUnmarshled;
 import testinit.TestDriver;
@@ -11,7 +13,9 @@ import testinit.GlobalVariables.TestingFrame;
 import testinit.GlobalVariables.TestingTypes;
 
 public class RestAssuredRunner {
-	public static void main(String[] args) throws IOException {
+	
+	@Test
+	public void runner() throws IOException {
 		TestDriver myTestDriver = new TestDriver();
 
 		FrameworkUnmarshled unmarshled = new FrameworkImplementation();
