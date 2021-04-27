@@ -1,4 +1,4 @@
-package testUtility.screenshot;
+package testutility.screenshot;
 
 
 public interface ScreenshotManager {

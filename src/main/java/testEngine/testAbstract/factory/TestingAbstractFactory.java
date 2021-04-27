@@ -1,7 +1,7 @@
-package testEngine.testAbstract.factory;
+package testengine.testabstract.factory;
 
-import testInit.GlobalVariables._testingFrame;
+import testinit.GlobalVariables.TestingFrame;
 
 public abstract class TestingAbstractFactory {
-	public abstract TestingType getTestingType(_testingFrame testingFrame);
+	public abstract TestingType getTestingType(TestingFrame testingFrame);
 }

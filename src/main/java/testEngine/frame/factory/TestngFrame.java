@@ -1,21 +1,21 @@
-package testEngine.frame.factory;
+package testengine.frame.factory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.testng.TestNG;
 
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
-import testEngine.testAbstract.factory.TestingAbstractFactory;
-import testEngine.testAbstract.factory.TestingProducer;
-import testEngine.testAbstract.factory.TestingType;
-import testInit.GlobalVariables;
+import testengine.frame.interceptor.FrameworkUnmarshled;
+import testengine.testabstract.factory.TestingAbstractFactory;
+import testengine.testabstract.factory.TestingProducer;
+import testengine.testabstract.factory.TestingType;
+import testinit.GlobalVariables;
 
 public class TestngFrame extends GlobalVariables implements FrameType{
 
 	public void selectFrameType(FrameworkUnmarshled context) {
 		log.info("Testng Frame Executing");
-		TestingAbstractFactory testFactory=TestingProducer.gettestFactory(context.getTestType());
+		TestingAbstractFactory testFactory=TestingProducer.getTestFactory(context.getTestType());
 		TestingType testType=testFactory.getTestingType(context.getTestTypeFrame());
 		testType.testing(context);
 		String testngFile=dirTestResource+context.getTestFeature();

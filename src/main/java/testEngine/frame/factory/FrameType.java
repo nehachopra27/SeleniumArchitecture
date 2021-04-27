@@ -1,6 +1,6 @@
-package testEngine.frame.factory;
+package testengine.frame.factory;
 
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
+import testengine.frame.interceptor.FrameworkUnmarshled;
 
 public interface FrameType {
 	public void selectFrameType(FrameworkUnmarshled context);

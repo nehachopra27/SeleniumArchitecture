@@ -1,4 +1,4 @@
-package testUtility.reporting;
+package testutility.reporting;
 
 import java.io.File;
 import org.testng.ITestResult;
@@ -10,13 +10,13 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Protocol;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import testInit.GlobalVariables;
-import testUtility.screenshot.ScreenshotManager;
-import testUtility.screenshot.ScreenshotManagerImp;
+import testinit.GlobalVariables;
+import testutility.screenshot.ScreenshotManager;
+import testutility.screenshot.ScreenshotManagerImp;
 
 public class ExtentReportManagerUI extends GlobalVariables implements ExtentReportManager {
 
-	public void onStart(File extentReportPath, String projectName, String featureName) {
+	public synchronized void onStart(File extentReportPath, String projectName, String featureName) {
 		sparkReport = new ExtentSparkReporter(extentReportPath);
 		sparkReport.config().setDocumentTitle(projectName);
 		sparkReport.config().setReportName("Automation Report");
@@ -39,64 +39,27 @@ public class ExtentReportManagerUI extends GlobalVariables implements ExtentRepo
 		}
 	}
 
-	private void updateReport(_status status, String scenario, String step) {
+	private void updateReport(TestStatus status, String scenario, String step) {
 		String pathScreenshot = _pathScreenshot + seprator + scenario + seprator + step + ".png";
 		String url = "<img width='100px' src=\"" + pathScreenshot + "\"data-src=\"" + pathScreenshot
 				+ "\" data-featherlight=\"" + pathScreenshot + "\">";
 		String[][] desc = { { "" }, { generateScreenshotData(step, url) } };
 		switch (status) {
-		case PASS: {
-			if (_scenario != null && _scenario.equals(scenario)) {
-
-				stepInfo.log(Status.PASS, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			} else {
-				stepInfo = testInfo.createNode(scenario);
-				stepInfo.log(Status.PASS, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			}
-
+		case PASS:
+			updatePass(scenario, desc);
 			break;
-		}
-		case FAIL: {
-			if (_scenario != null && _scenario.equals(scenario)) {
-
-				stepInfo.log(Status.FAIL, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			} else {
-				stepInfo = testInfo.createNode(scenario);
-				stepInfo.log(Status.FAIL, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			}
-
+		case FAIL:
+			updateFail(scenario, desc);
 			break;
-		}
-		case SKIP: {
-			if (_scenario != null && _scenario.equals(scenario)) {
 
-				stepInfo.log(Status.SKIP, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			} else {
-				stepInfo = testInfo.createNode(scenario);
-				stepInfo.log(Status.SKIP, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			}
-
+		case SKIP:
+			updateSkip(scenario, desc);
 			break;
-		}
-		case BLOCKED: {
-			if (_scenario != null && _scenario.equals(scenario)) {
 
-				stepInfo.log(Status.WARNING, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			} else {
-				stepInfo = testInfo.createNode(scenario);
-				stepInfo.log(Status.WARNING, MarkupHelper.createTable(desc));
-				_scenario = scenario;
-			}
-
+		case BLOCKED:
+			updateBlocked(scenario, desc);
 			break;
-		}
+
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + status);
 		}
@@ -107,16 +70,52 @@ public class ExtentReportManagerUI extends GlobalVariables implements ExtentRepo
 				+ "</lable><br></td>" + "<td width='10%'>" + screenshot + "</td>" + "</tr>" + "</tbody>" + "</table>";
 	}
 
-
-	public void updateResult(_status status, String scenario, String step) {
+	public void updateResult(TestStatus status, String scenario, String step) {
 		resultDetails(status, scenario, step);
 	}
 
-	private void resultDetails(_status status, String scenario, String step) {
+	private void resultDetails(TestStatus status, String scenario, String step) {
 		ScreenshotManager objScreenshotManager = new ScreenshotManagerImp();
 		String screenshot = _pathScreenshot + seprator + scenario + seprator;
 		objScreenshotManager.takeScreenshot(screenshot, step);
 		updateReport(status, scenario, step);
+	}
+
+	private void updateBlocked(String scenario, String[][] desc) {
+		stepInfo = testInfo.createNode(scenario);
+		stepInfo.log(Status.WARNING, MarkupHelper.createTable(desc));
+		scenarioTest = scenario;
+	}
+
+	private void updateSkip(String scenario, String[][] desc) {
+		stepInfo = testInfo.createNode(scenario);
+		stepInfo.log(Status.SKIP, MarkupHelper.createTable(desc));
+		scenarioTest = scenario;
+	}
+
+	private void updateFail(String scenario, String[][] desc) {
+		if (scenarioTest != null && scenarioTest.equals(scenario)) {
+
+			stepInfo.log(Status.FAIL, MarkupHelper.createTable(desc));
+			scenarioTest = scenario;
+		} else {
+			stepInfo = testInfo.createNode(scenario);
+			stepInfo.log(Status.FAIL, MarkupHelper.createTable(desc));
+			scenarioTest = scenario;
+		}
+	}
+
+	private void updatePass(String scenario, String[][] desc) {
+		if (scenarioTest != null && scenarioTest.equals(scenario)) {
+
+			stepInfo.log(Status.PASS, MarkupHelper.createTable(desc));
+			scenarioTest = scenario;
+		} else {
+			stepInfo = testInfo.createNode(scenario);
+			stepInfo.log(Status.PASS, MarkupHelper.createTable(desc));
+			scenarioTest = scenario;
+		}
+
 	}
 
 }

@@ -1,23 +1,20 @@
-package testEngine.frame.factory;
+package testengine.frame.factory;
 
-import testInit.GlobalVariables._frameworkName;
+import testinit.GlobalVariables.FrameworkName;
 
 public class FrameTypeFactory {
 
-	public FrameType getFrameType(_frameworkName frameName) {
+	public FrameType getFrameType(FrameworkName frameName) {
 		switch (frameName) {
-		case TESTNG: {
+		case TESTNG:
 			return new TestngFrame();
-		}
-		case CUCUMBER: {
+		case CUCUMBER:
 			return new CucumberFrame();
-		}
-		case DATADRIVEN:{
+		case DATADRIVEN:
 			return new DataDriver();
-		}
 		default:
 			return null;
 		}
 	}
-	
+
 }

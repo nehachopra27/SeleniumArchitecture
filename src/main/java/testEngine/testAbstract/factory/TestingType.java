@@ -1,6 +1,6 @@
-package testEngine.testAbstract.factory;
+package testengine.testabstract.factory;
 
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
+import testengine.frame.interceptor.FrameworkUnmarshled;
 
 public interface TestingType {
 	void testing(FrameworkUnmarshled context);

@@ -1,7 +1,7 @@
-package testEngine.environment.adapter;
+package testengine.environment.adapter;
 
-import testInit.GlobalVariables.*;
+import testinit.GlobalVariables.*;
 
 public interface Browser {
-	public void intiBrowser(_systemType systemType, _browserName browserName);
+	public void intiBrowser(SystemType systemType, BrowserName browserName);
 }

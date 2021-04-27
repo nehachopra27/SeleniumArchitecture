@@ -1,10 +1,10 @@
-package testUtility.reporting;
+package testutility.reporting;
 
 import java.io.File;
 
 import org.testng.ITestResult;
 
-import testInit.GlobalVariables._status;
+import testinit.GlobalVariables.TestStatus;
 
 public interface ExtentReportManager {
 
@@ -12,6 +12,6 @@ public interface ExtentReportManager {
 
 	public void getResult(ITestResult result);
 
-	public void updateResult(_status status, String scenario, String step);
+	public void updateResult(TestStatus status, String scenario, String step);
 
 }

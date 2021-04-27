@@ -1,9 +1,9 @@
-package testEngine.browser.bridge;
+package testengine.browser.bridge;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import testInit.GlobalVariables;
+import testinit.GlobalVariables;
 
 public class ChromeBrowser extends GlobalVariables implements InitiateDriver {
 

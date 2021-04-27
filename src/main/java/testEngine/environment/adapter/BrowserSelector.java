@@ -1,4 +1,4 @@
-package testEngine.environment.adapter;
+package testengine.environment.adapter;
 
 public interface BrowserSelector {
 	public void seleniumChrome();

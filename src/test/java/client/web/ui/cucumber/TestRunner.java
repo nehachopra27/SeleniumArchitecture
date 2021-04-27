@@ -1,23 +1,25 @@
 package client.web.ui.cucumber;
 
-import testEngine.frame.Interceptor.FrameworkImplementation;
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
-import testInit.TestDriver;
-import testInit.GlobalVariables.*;
+import java.io.IOException;
+
+import testengine.frame.interceptor.FrameworkImplementation;
+import testengine.frame.interceptor.FrameworkUnmarshled;
+import testinit.TestDriver;
+import testinit.GlobalVariables.*;
 
 public class TestRunner {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		TestDriver myTestDriver = new TestDriver();
 
 		FrameworkUnmarshled unmarshled = new FrameworkImplementation();
-		unmarshled.setTestBrowser(_browserName.CHROME);
-		unmarshled.setTestEnvironment(_environmentName.STAGE);
+		unmarshled.setTestBrowser(BrowserName.CHROME);
+		unmarshled.setTestEnvironment(EnvironmentName.STAGE);
 		unmarshled.setTestFeature("loginCucumberUI.feature");
 		unmarshled.setTestProject("cucumberProject");
-		unmarshled.setTestSystem(_systemType.WINDOWS);
-		unmarshled.setTestType(_testingType.UI);
-		unmarshled.setTestTypeFrame(_testingFrame.UI_TESTING_WITH_SELENIUM);
-		unmarshled.setFrameworkName(_frameworkName.CUCUMBER);
+		unmarshled.setTestSystem(SystemType.MAC);
+		unmarshled.setTestType(TestingTypes.UI);
+		unmarshled.setTestTypeFrame(TestingFrame.UI_TESTING_WITH_SELENIUM);
+		unmarshled.setFrameworkName(FrameworkName.CUCUMBER);
 		myTestDriver.testInitiator(unmarshled);
 	}
 

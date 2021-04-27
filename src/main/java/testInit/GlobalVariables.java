@@ -1,4 +1,4 @@
-package testInit;
+package testinit;
 
 import org.openqa.selenium.WebDriver;
 
@@ -15,54 +15,52 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-
-
 public class GlobalVariables {
 
-	public enum _environmentName {
+	public enum EnvironmentName {
 		TEST, STAGE, PROD
 	}
 
-	public enum _testingType {
+	public enum TestingTypes {
 		UI, API, DATABASE
 	}
 
-	public enum _testingFrame {
+	public enum TestingFrame {
 		UI_TESTING_WITH_SELENIUM, UI_TESTING_WITH_PROTRACTOR, API_TESTING_WITH_REST_ASSURED, API_TESTING_WITH_KARATE
 	}
 
-	public enum _systemType {
+	public enum SystemType {
 		WINDOWS, MAC, ANDROID
 	}
 
-	public enum _browserName {
+	public enum BrowserName {
 		CHROME, IE, SAFARI
 	}
 
-	public enum _frameworkName {
+	public enum FrameworkName {
 		CUCUMBER, TESTNG, DATADRIVEN
 	}
 
-	public enum _status {
+	public enum TestStatus {
 		PASS, FAIL, SKIP, BLOCKED
 	}
 
-	public enum _elementType {
-		ByID, ByCssSelector, ByXpath, ByClassName, ByLinkText, ByPartialLinkText, Byjs
+	public enum ElementType {
+		BYID, BYCSSSELECTOR, BYXPATH, BYCLASSNAME, BYLINKTEXT, BYPARTIALLINKTEXT, BYJS
 	}
 
 	public static ExtentReports reports;
 	public static ExtentTest testInfo;
 	public static ExtentTest stepInfo;
-	public static String _scenario;
-	public static ExtentSparkReporter sparkReport;
+	public static String scenarioTest;
+	public  ExtentSparkReporter sparkReport;
 	Map<String, ExtentTest> feature = new HashMap<String, ExtentTest>();
-	public static String _actualResult;
-	static String moduleName;
+	public static String actualResult;
+	public static String moduleName;
 
-	public static RequestSpecification _request;
-	public static JSONObject requestParams = new JSONObject();
-	public static Response _response;
+	public RequestSpecification request;
+	public static final JSONObject requestParams = new JSONObject();
+	public Response response;
 	
 	public static Logger log;
 	public static final String seprator = System.getProperty("file.separator");

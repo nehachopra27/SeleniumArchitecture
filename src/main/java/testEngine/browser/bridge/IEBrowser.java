@@ -1,9 +1,9 @@
-package testEngine.browser.bridge;
+package testengine.browser.bridge;
 
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import testInit.GlobalVariables;
+import testinit.GlobalVariables;
 
 public class IEBrowser extends GlobalVariables implements InitiateDriver{
 

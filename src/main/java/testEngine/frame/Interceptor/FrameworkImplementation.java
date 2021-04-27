@@ -1,22 +1,22 @@
-package testEngine.frame.Interceptor;
+package testengine.frame.interceptor;
 
-import testInit.GlobalVariables._browserName;
-import testInit.GlobalVariables._environmentName;
-import testInit.GlobalVariables._frameworkName;
-import testInit.GlobalVariables._systemType;
-import testInit.GlobalVariables._testingFrame;
-import testInit.GlobalVariables._testingType;
+import testinit.GlobalVariables.BrowserName;
+import testinit.GlobalVariables.EnvironmentName;
+import testinit.GlobalVariables.FrameworkName;
+import testinit.GlobalVariables.SystemType;
+import testinit.GlobalVariables.TestingFrame;
+import testinit.GlobalVariables.TestingTypes;
 
 public class FrameworkImplementation implements FrameworkUnmarshled {
 	String testProject;
-	_environmentName testEnvironment;
-	_testingType testType;
-	_systemType testSystem;
-	_browserName testBrowser;
+	EnvironmentName testEnvironment;
+	TestingTypes testType;
+	SystemType testSystem;
+	BrowserName testBrowser;
 	String testFeature;
 	String testngXML;
-	_frameworkName frameworkName;
-	_testingFrame testingFrame;
+	FrameworkName frameworkName;
+	TestingFrame testingFrame;
 
 	public String getTestProject() {
 		return testProject;
@@ -26,35 +26,35 @@ public class FrameworkImplementation implements FrameworkUnmarshled {
 		this.testProject = testProject;
 	}
 
-	public _environmentName getTestEnvironment() {
+	public EnvironmentName getTestEnvironment() {
 		return testEnvironment;
 	}
 
-	public void setTestEnvironment(_environmentName testEnvironment) {
+	public void setTestEnvironment(EnvironmentName testEnvironment) {
 		this.testEnvironment = testEnvironment;
 	}
 
-	public _testingType getTestType() {
+	public TestingTypes getTestType() {
 		return testType;
 	}
 
-	public void setTestType(_testingType testType) {
+	public void setTestType(TestingTypes testType) {
 		this.testType = testType;
 	}
 
-	public _systemType getTestSystem() {
+	public SystemType getTestSystem() {
 		return testSystem;
 	}
 
-	public void setTestSystem(_systemType testSystem) {
+	public void setTestSystem(SystemType testSystem) {
 		this.testSystem = testSystem;
 	}
 
-	public _browserName getTestBrowser() {
+	public BrowserName getTestBrowser() {
 		return testBrowser;
 	}
 
-	public void setTestBrowser(_browserName testBrowser) {
+	public void setTestBrowser(BrowserName testBrowser) {
 		this.testBrowser = testBrowser;
 	}
 
@@ -75,19 +75,19 @@ public class FrameworkImplementation implements FrameworkUnmarshled {
 
 	}
 
-	public void setFrameworkName(_frameworkName frameworkName) {
+	public void setFrameworkName(FrameworkName frameworkName) {
 		this.frameworkName = frameworkName;
 	}
 
-	public _frameworkName getFrameworkName() {
+	public FrameworkName getFrameworkName() {
 		return frameworkName;
 	}
 
-	public _testingFrame getTestTypeFrame() {
+	public TestingFrame getTestTypeFrame() {
 		return testingFrame;
 	}
 
-	public void setTestTypeFrame(_testingFrame testingFrame) {
+	public void setTestTypeFrame(TestingFrame testingFrame) {
 		this.testingFrame=testingFrame;
 	}
 

@@ -1,14 +1,14 @@
-package testEngine.frame.visitor;
+package testengine.frame.visitor;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
-import testInit.GlobalVariables;
-import testUtility.java.JavaReadWriteHelperImp;
+import testinit.GlobalVariables;
+import testutility.java.JavaReadWriteHelperImp;
 
-public class FrameSetupVisitorImp extends GlobalVariables implements FrameworkVisitor {
+public class FrameSetupVisitorImp extends GlobalVariables implements FrameworkVisitor  {
 
 	JavaReadWriteHelperImp myJavaFun = new JavaReadWriteHelperImp();
 
@@ -22,7 +22,7 @@ public class FrameSetupVisitorImp extends GlobalVariables implements FrameworkVi
 		myJavaFun.createFolder(pathDirOutput);
 	}
 
-	public void setup(SetupLogFile setupLogFile) {
+	public void setup(SetupLogFile setupLogFile) throws IOException {
 		Properties prop = new Properties();
 		prop.setProperty("log4j.rootLogger", "INFO,FILE,console");
 		prop.setProperty("log4j.appender.FILE", "org.apache.log4j.FileAppender");
@@ -37,13 +37,12 @@ public class FrameSetupVisitorImp extends GlobalVariables implements FrameworkVi
 		prop.setProperty("log4j.appender.console.encoding", "UTF-8");
 		prop.setProperty("log4j.appender.console.layout", "org.apache.log4j.PatternLayout");
 		prop.setProperty("log4j.appender.console.layout.conversionPattern", "%d [%t] %-5p %c - %m%n");
-		try {
-			prop.store(new FileWriter(new File(pathLog4jProperties)), "comments");
+		
+		try (FileWriter fileWriter=new FileWriter(new File(pathLog4jProperties));) {	
+			prop.store(fileWriter, "comments");
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-
-		}
+		} 
 	}
 
 }

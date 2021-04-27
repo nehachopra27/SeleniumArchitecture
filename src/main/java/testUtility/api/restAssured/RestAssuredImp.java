@@ -1,15 +1,14 @@
-package testUtility.api.restAssured;
+package testutility.api.restassured;
 
-
-import io.restassured.RestAssured;
-import testInit.GlobalVariables;
+import io.restassured.*;
+import testinit.GlobalVariables;
 
 public class RestAssuredImp extends GlobalVariables implements RestAssuredActions {
 
 	public boolean createRequestEndPoint(String baseURI) {
 		try {
 			RestAssured.baseURI = baseURI;
-			_request = RestAssured.given();
+			request = RestAssured.given();
 			return true;
 		} catch (Exception e) {
 			log.error("not able to create request end point");
@@ -21,8 +20,7 @@ public class RestAssuredImp extends GlobalVariables implements RestAssuredAction
 
 	public boolean addJsonParam(String key, String value) {
 		try {
-			_request.formParams(key, value);
-			//requestParams.put(key, value);
+			request.formParams(key, value);
 			return true;
 		} catch (Exception e) {
 			log.error("not able to add param");
@@ -33,7 +31,7 @@ public class RestAssuredImp extends GlobalVariables implements RestAssuredAction
 
 	public boolean addRequestHeader(String key, String value) {
 		try {
-			_request.header(key, value);
+			request.header(key, value);
 			return true;
 		} catch (Exception e) {
 			log.error("not able to add param");
@@ -42,10 +40,9 @@ public class RestAssuredImp extends GlobalVariables implements RestAssuredAction
 		}
 	}
 
-
 	public boolean sendPostRequest(String queryString) {
 		try {
-			_response = _request.post(queryString);
+			response = request.post(queryString);
 			return true;
 		} catch (Exception e) {
 			log.error("not able to add body");
@@ -55,12 +52,7 @@ public class RestAssuredImp extends GlobalVariables implements RestAssuredAction
 	}
 
 	public boolean validateResponseCode(int responseCode) {
-		if(_response.getStatusCode() == responseCode) {
-			
-			return true;
-		} else {
-			return false;
-		}
+		return (response.getStatusCode() == responseCode);
 	}
 
 }

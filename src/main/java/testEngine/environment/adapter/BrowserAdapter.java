@@ -1,41 +1,36 @@
-package testEngine.environment.adapter;
+package testengine.environment.adapter;
 
-import testInit.GlobalVariables._browserName;
-import testInit.GlobalVariables._systemType;
+import testinit.GlobalVariables.BrowserName;
+import testinit.GlobalVariables.SystemType;
 
 public class BrowserAdapter implements Browser {
 
 	BrowserSelector browserSelector;
 
-	public BrowserAdapter(_systemType systemType) {
+	public BrowserAdapter(SystemType systemType) {
 		switch (systemType) {
-		case WINDOWS: {
+		case WINDOWS: 
 			browserSelector = new Windows();
 			break;
-		}
-		case MAC: {
+		case MAC: 
 			browserSelector = new MAC();
 			break;
-		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + systemType);
 		}
 	}
 
-	public void intiBrowser(_systemType systemType, _browserName browserName) {
+	public void intiBrowser(SystemType systemType, BrowserName browserName) {
 		switch (browserName) {
-		case CHROME: {
+		case CHROME: 
 			browserSelector.seleniumChrome();
 			break;
-		}
-		case IE: {
+		case IE: 
 			browserSelector.seleniumIE();
 			break;
-		}
-		case SAFARI: {
+		case SAFARI: 
 			browserSelector.seleniumSafari();
 			break;
-		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + browserName);
 		}
