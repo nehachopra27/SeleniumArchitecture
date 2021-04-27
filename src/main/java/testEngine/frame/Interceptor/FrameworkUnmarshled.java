@@ -1,32 +1,32 @@
-package testEngine.frame.Interceptor;
+package testengine.frame.interceptor;
 
 
-import testInit.GlobalVariables._browserName;
-import testInit.GlobalVariables._environmentName;
-import testInit.GlobalVariables._frameworkName;
-import testInit.GlobalVariables._systemType;
-import testInit.GlobalVariables._testingFrame;
-import testInit.GlobalVariables._testingType;
+import testinit.GlobalVariables.BrowserName;
+import testinit.GlobalVariables.EnvironmentName;
+import testinit.GlobalVariables.FrameworkName;
+import testinit.GlobalVariables.SystemType;
+import testinit.GlobalVariables.TestingFrame;
+import testinit.GlobalVariables.TestingTypes;
 
 public interface FrameworkUnmarshled {
 
 	public String getTestProject();
 	public void setTestProject(String testProject);
-	public _environmentName getTestEnvironment();
-	public void setTestEnvironment(_environmentName testEnvironment);
-	public _testingType getTestType();
-	public void setTestType(_testingType testType);
-	public _testingFrame getTestTypeFrame();
-	public void setTestTypeFrame(_testingFrame testingFrame);
-	public _systemType getTestSystem();
-	public void setTestSystem(_systemType testSystem);
-	public _browserName getTestBrowser();
-	public void setTestBrowser(_browserName testBrowser);
+	public EnvironmentName getTestEnvironment();
+	public void setTestEnvironment(EnvironmentName testEnvironment);
+	public TestingTypes getTestType();
+	public void setTestType(TestingTypes testType);
+	public TestingFrame getTestTypeFrame();
+	public void setTestTypeFrame(TestingFrame testingFrame);
+	public SystemType getTestSystem();
+	public void setTestSystem(SystemType testSystem);
+	public BrowserName getTestBrowser();
+	public void setTestBrowser(BrowserName testBrowser);
 	public String getTestFeature();
 	public void setTestFeature(String testFeature);
 	public String getTestngXML();
 	public void setTestngXML(String testngXML);
-	public _frameworkName getFrameworkName();
-	public void setFrameworkName(_frameworkName frameworkName);
+	public FrameworkName getFrameworkName();
+	public void setFrameworkName(FrameworkName frameworkName);
 
 }

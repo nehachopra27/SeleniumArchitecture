@@ -1,6 +1,8 @@
-package testEngine.frame.Interceptor;
+package testengine.frame.interceptor;
 
-import java.util.Vector;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FrameDispatcher implements TestFrameRequestInterceptor {
 
@@ -16,33 +18,29 @@ public class FrameDispatcher implements TestFrameRequestInterceptor {
 		if (null == instance) {
 			// synchronized block to remove overhead
 			synchronized (FrameDispatcher.class) {
-				if (null == instance) {
-					// if instance is null, initialize
-					instance = new FrameDispatcher();
-				}
+				instance = new FrameDispatcher();
 
 			}
 		}
 		return instance;
 	}
 
-	Vector<TestFrameRequestInterceptor> intercepter_ = new Vector<TestFrameRequestInterceptor>();
+	List<TestFrameRequestInterceptor> intercepter = new ArrayList<TestFrameRequestInterceptor>();
 
 	public synchronized void registerFrameRequestInterceptor(TestFrameRequestInterceptor interceptor) {
-		intercepter_.add(interceptor);
+		intercepter.add(interceptor);
 	}
 
 	public synchronized void removeFrameRequestInterceptor(TestFrameRequestInterceptor interceptor) {
-		intercepter_.remove(interceptor);
+		intercepter.remove(interceptor);
 	}
 
-	@SuppressWarnings("unchecked")
-	public void dispatchFrameworkRequestInterceptor(FrameworkUnmarshled context) {
+	public void dispatchFrameworkRequestInterceptor(FrameworkUnmarshled context) throws IOException {
 		synchronized (this) {
-			intercepter_ = (Vector<TestFrameRequestInterceptor>) intercepter_.clone();
+			intercepter = new ArrayList<TestFrameRequestInterceptor>(intercepter);
 		}
-		for (int i = 0; i < intercepter_.size(); i++) {
-			TestFrameRequestInterceptor myRequestInterceptor = intercepter_.elementAt(i);
+		for (int i = 0; i < intercepter.size(); i++) {
+			TestFrameRequestInterceptor myRequestInterceptor = intercepter.get(i);
 			myRequestInterceptor.onPreInit();
 			myRequestInterceptor.intiateLogs();
 			myRequestInterceptor.intiateFrame(context);
@@ -65,6 +63,5 @@ public class FrameDispatcher implements TestFrameRequestInterceptor {
 	public void intiateFrame(FrameworkUnmarshled context) {
 		throw new UnsupportedOperationException();
 	}
-
 
 }

@@ -1,23 +1,20 @@
-package testEngine.testAbstract.factory;
+package testengine.testabstract.factory;
 
-import testInit.GlobalVariables._testingType;
+import testinit.GlobalVariables.TestingTypes;
 
 public class TestingProducer {
 	
 	TestingProducer() {
 		
 	}
-	public static TestingAbstractFactory gettestFactory(_testingType testingType) {
+	public static TestingAbstractFactory getTestFactory(TestingTypes testingType) {
 		switch (testingType) {
-		case UI: {
+		case UI: 
 			return new UITesting();
-		}
-		case API: {
+		case API: 
 			return new APITesting();
-		}
-		case DATABASE:{
+		case DATABASE:
 			return null;
-		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + testingType);
 		}

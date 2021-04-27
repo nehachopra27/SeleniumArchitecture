@@ -1,12 +1,12 @@
-package testEngine.environment.adapter;
+package testengine.environment.adapter;
 
 
-import testEngine.browser.bridge.ChromeBrowser;
-import testEngine.browser.bridge.IEBrowser;
-import testEngine.browser.bridge.SeleniumBrowserCall;
-import testEngine.browser.bridge.SeleniumWindowsBrowser;
-import testInit.GlobalVariables;
-import testUtility.java.JavaReadWriteHelperImp;
+import testengine.browser.bridge.ChromeBrowser;
+import testengine.browser.bridge.IEBrowser;
+import testengine.browser.bridge.SeleniumBrowserCall;
+import testengine.browser.bridge.SeleniumWindowsBrowser;
+import testinit.GlobalVariables;
+import testutility.java.JavaReadWriteHelperImp;
 
 public class Windows extends GlobalVariables implements BrowserSelector{
 

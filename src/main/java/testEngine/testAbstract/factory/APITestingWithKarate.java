@@ -1,11 +1,12 @@
-package testEngine.testAbstract.factory;
+package testengine.testabstract.factory;
 
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
+import testengine.frame.interceptor.FrameworkUnmarshled;
+import testinit.GlobalVariables;
 
-public class APITestingWithKarate implements TestingType{
+public class APITestingWithKarate extends GlobalVariables implements TestingType{
 
 	public void testing(FrameworkUnmarshled context) {
-		System.out.println("API testing with Karate");
+		log.info("API testing with Karate");
 	}
 
 }

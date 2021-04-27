@@ -1,7 +1,7 @@
-package testEngine.testAbstract.factory;
+package testengine.testabstract.factory;
 
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
-import testInit.GlobalVariables;
+import testengine.frame.interceptor.FrameworkUnmarshled;
+import testinit.GlobalVariables;
 
 public class UITestingWithProtractor extends GlobalVariables implements TestingType{
 

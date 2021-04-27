@@ -1,4 +1,4 @@
-package testUtility.ui.selenium;
+package testutility.ui.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,9 +7,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import testInit.GlobalVariables;
-import testUtility.ui.selenium.element.config.ConfigElementImp;
-import testUtility.ui.selenium.element.config.ConfigureElement;
+import testinit.GlobalVariables;
+import testutility.ui.selenium.element.config.ConfigElementImp;
+import testutility.ui.selenium.element.config.ConfigureElement;
 
 public class SeleniumActionsImp extends GlobalVariables implements SeleniumActions {
 
@@ -53,16 +53,6 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 
 	public boolean waituntilElementDisplayed(WebElement element, int timeOutInSeconds) {
 		return true;
-//		try {
-//			WebDriverWait wait = new WebDriverWait(seleniumDriver, timeOutInSeconds);
-//			ExpectedCondition<Boolean> elementIsDisplayed = arg0 -> element.isDisplayed();
-//			wait.until(elementIsDisplayed);
-//			return 1;
-//		} catch (Exception e) {
-//			log.error("waituntilElementDisplayed time out");
-//			log.error(e.getMessage());
-//			return 0;
-//		}
 	}
 
 	public boolean moveToElement(WebElement element) {
@@ -81,10 +71,8 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 			waituntilElementDisplayed(locator, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
 			moveToElement(element);
-			if (element.isDisplayed())
-				return true;
-			else
-				return false;
+			return element.isDisplayed();
+
 		} catch (Exception e) {
 			errorLog(e, "not able to validate display element");
 			return false;
@@ -96,10 +84,7 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 			waituntilElementDisplayed(locator, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
 			moveToElement(element);
-			if (element.isEnabled())
-				return true;
-			else
-				return false;
+			return element.isEnabled();
 		} catch (Exception e) {
 			errorLog(e, "not able to validate display is enable");
 			return false;
@@ -111,10 +96,7 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 			waituntilElementDisplayed(locator, timeOutInSeconds);
 			WebElement element = objConfigureElement.getElement(locator);
 			moveToElement(element);
-			if (!element.isEnabled())
-				return true;
-			else
-				return false;
+			return !element.isEnabled();
 		} catch (Exception e) {
 			errorLog(e, "not able to validate display is not enable");
 			return false;
@@ -151,7 +133,9 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 			return true;
 		} catch (InterruptedException e) {
 			errorLog(e, "sleep wait is not working");
+			Thread.currentThread().interrupt();
 			return false;
+
 		}
 	}
 
@@ -255,21 +239,15 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 	}
 
 	public boolean validateTxt(String source, String target) {
-		if (source.equals(target)) {
-			return true;
-		} else {
-			return false;
-		}
+			return source.equals(target);
+	
 	}
 
-	public boolean validateTestExistOnPage(String txt) {
-		if(seleniumDriver.getPageSource().contains(txt))
-			return true;
-		else
-			return false;
+	public boolean validateTextExistOnPage(String txt) {
+		return seleniumDriver.getPageSource().contains(txt);
+
 	}
-	
-	
+
 	public boolean closeDriver() {
 		try {
 			if (null != seleniumDriver) {
@@ -316,7 +294,5 @@ public class SeleniumActionsImp extends GlobalVariables implements SeleniumActio
 		log.error(message);
 		log.error(e.getMessage());
 	}
-
-	
 
 }

@@ -1,25 +1,31 @@
 package client.rest.restassured;
 
-import testEngine.frame.Interceptor.FrameworkImplementation;
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
-import testInit.TestDriver;
-import testInit.GlobalVariables._environmentName;
-import testInit.GlobalVariables._frameworkName;
-import testInit.GlobalVariables._testingFrame;
-import testInit.GlobalVariables._testingType;
+import java.io.IOException;
+
+import org.testng.annotations.Test;
+
+import testengine.frame.interceptor.FrameworkImplementation;
+import testengine.frame.interceptor.FrameworkUnmarshled;
+import testinit.TestDriver;
+import testinit.GlobalVariables.EnvironmentName;
+import testinit.GlobalVariables.FrameworkName;
+import testinit.GlobalVariables.TestingFrame;
+import testinit.GlobalVariables.TestingTypes;
 
 public class RestAssuredRunner {
-	public static void main(String[] args) {
+	
+	@Test
+	public void runner() throws IOException {
 		TestDriver myTestDriver = new TestDriver();
 
 		FrameworkUnmarshled unmarshled = new FrameworkImplementation();
 		
-		unmarshled.setTestEnvironment(_environmentName.STAGE);
+		unmarshled.setTestEnvironment(EnvironmentName.STAGE);
 		unmarshled.setTestFeature("loginCucumberAPI.feature");
 		unmarshled.setTestProject("APIProject");
-		unmarshled.setTestType(_testingType.API);
-		unmarshled.setTestTypeFrame(_testingFrame.API_TESTING_WITH_REST_ASSURED);
-		unmarshled.setFrameworkName(_frameworkName.CUCUMBER);
+		unmarshled.setTestType(TestingTypes.API);
+		unmarshled.setTestTypeFrame(TestingFrame.API_TESTING_WITH_REST_ASSURED);
+		unmarshled.setFrameworkName(FrameworkName.CUCUMBER);
 		myTestDriver.testInitiator(unmarshled);
 
 	}

@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="1" name="testng">
     <classes>
-      <class name="client.web.ui.testng.Validate_login_functionality"/>
+      <class name="client.web.ui.testng.ValidateLoginFunctionalityTest"/>
     </classes>
   </test> <!-- testng -->
 </suite> <!-- Suite -->

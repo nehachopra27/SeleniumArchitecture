@@ -1,14 +1,14 @@
 package client.web.ui.testng;
 
-import testInit.GlobalVariables._elementType;
+import testinit.GlobalVariables.ElementType;
 
 public class LoginLocator {
 
-	public _elementType typ_lnk_SignIn=_elementType.ByID;
-	public _elementType typ_txt_username=_elementType.ByID;
-	public _elementType typ_txt_password=_elementType.ByID;
-	public _elementType typ_btn_SignIn=_elementType.ByXpath;
-	public _elementType typ_lbl_errorMessage=_elementType.ByXpath;
+	public ElementType typ_lnk_SignIn=ElementType.BYID;
+	public ElementType typ_txt_username=ElementType.BYID;
+	public ElementType typ_txt_password=ElementType.BYID;
+	public ElementType typ_btn_SignIn=ElementType.BYXPATH;
+	public ElementType typ_lbl_errorMessage=ElementType.BYXPATH;
 	
 	
 	

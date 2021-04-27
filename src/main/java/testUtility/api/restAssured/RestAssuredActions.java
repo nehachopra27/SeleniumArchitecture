@@ -1,5 +1,4 @@
-package testUtility.api.restAssured;
-
+package testutility.api.restassured;
 
 public interface RestAssuredActions {
 

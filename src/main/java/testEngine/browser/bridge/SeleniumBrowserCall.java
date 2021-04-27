@@ -1,4 +1,4 @@
-package testEngine.browser.bridge;
+package testengine.browser.bridge;
 
 public abstract class SeleniumBrowserCall {
 	protected InitiateDriver initiateDriver;

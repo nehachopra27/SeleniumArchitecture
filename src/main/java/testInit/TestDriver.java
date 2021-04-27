@@ -1,24 +1,26 @@
-package testInit;
+package testinit;
 
 
+
+import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import testEngine.frame.Interceptor.FrameDispatcher;
-import testEngine.frame.Interceptor.FrameworkUnmarshled;
-import testEngine.frame.Interceptor.TestFrameRequestInterceptor;
-import testEngine.frame.factory.FrameType;
-import testEngine.frame.factory.FrameTypeFactory;
-import testEngine.frame.visitor.Frame;
-import testEngine.frame.visitor.FrameSetupVisitorImp;
+import testengine.frame.interceptor.FrameDispatcher;
+import testengine.frame.interceptor.FrameworkUnmarshled;
+import testengine.frame.interceptor.TestFrameRequestInterceptor;
+import testengine.frame.factory.FrameType;
+import testengine.frame.factory.FrameTypeFactory;
+import testengine.frame.visitor.Frame;
+import testengine.frame.visitor.FrameSetupVisitorImp;
 
 public class TestDriver extends GlobalVariables {
 	
-	public void testInitiator(FrameworkUnmarshled context) {
+	public void testInitiator(FrameworkUnmarshled context) throws IOException {
 		TestFrameRequestInterceptor myFrameInterceptor = new TestFrameRequestInterceptor() {
 
-			public void onPreInit() {
+			public void onPreInit() throws IOException {
 				Frame frame = new Frame();
 				frame.frameAcceptance(new FrameSetupVisitorImp());
 			}
@@ -38,19 +40,16 @@ public class TestDriver extends GlobalVariables {
 			}
 
 			public void onPostFrameworkRequest(FrameworkUnmarshled context) {
+				reports.flush();
 				switch (context.getTestType()) {
-				case UI: {
-					reports.flush();
+				case UI: 
 					seleniumDriver.close();
 					break;
-				}
-				case API: {
+				case API: 
 					reports.flush();
 					break;
-				}
-				case DATABASE: {
+				case DATABASE: 
 					break;
-				}
 				default:
 					break;
 				}

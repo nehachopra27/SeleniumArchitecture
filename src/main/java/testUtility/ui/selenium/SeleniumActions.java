@@ -1,4 +1,4 @@
-package testUtility.ui.selenium;
+package testutility.ui.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,7 +21,7 @@ public interface SeleniumActions {
 	public boolean elementClickable(WebElement element, int timeOutInSeconds);
 	public String getText(By locator,int timeOutInSeconds);
 	public String getText(WebElement element,int timeOutInSeconds);
-	public boolean validateTestExistOnPage(String txt);
+	public boolean validateTextExistOnPage(String txt);
 	public boolean waitUntilElementNotVisable(By locator, int timeOutInSeconds);
 	public boolean waitUntilElementVisable(By locator,int timeOutInSeconds );
 	public boolean validateTxt(String source,String target);

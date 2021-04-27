@@ -1,42 +1,35 @@
-package testUtility.ui.selenium.element.config;
+package testutility.ui.selenium.element.config;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import testInit.GlobalVariables;
+import testinit.GlobalVariables;
 
 public class ConfigElementImp extends GlobalVariables implements ConfigureElement {
 
-	public By getElement(_elementType elementType, String elementLocator) {
+	public By getElement(ElementType elementType, String elementLocator) {
 		By objBy = null;
 		switch (elementType) {
-		case ByID: {
+		case BYID:
 			objBy = By.id(elementLocator);
 			break;
-		}
-		case ByCssSelector: {
+		case BYCSSSELECTOR:
 			objBy = By.cssSelector(elementLocator);
 			break;
-		}
-		case ByClassName: {
+		case BYCLASSNAME:
 			objBy = By.className(elementLocator);
 			break;
-		}
-		case ByLinkText: {
+		case BYLINKTEXT:
 			objBy = By.linkText(elementLocator);
 			break;
-		}
-		case ByXpath: {
+		case BYXPATH:
 			objBy = By.xpath(elementLocator);
 			break;
-		}
-		case ByPartialLinkText: {
+		case BYPARTIALLINKTEXT:
 			objBy = By.partialLinkText(elementLocator);
 			break;
-		}
-		case Byjs: {
+		case BYJS:
 			break;
-		}
 		}
 		return objBy;
 
