@@ -14,10 +14,9 @@ import testinit.GlobalVariables.SystemType;
 import testinit.GlobalVariables.TestingFrame;
 import testinit.GlobalVariables.TestingTypes;
 
-public class TestRunnerTestng {
+public class TestngTestRunner {
 
-	@Test
-	public void runner() throws IOException{
+	public static void main(String[] args) throws IOException {
 		TestDriver myTestDriver = new TestDriver();
 
 		FrameworkUnmarshled unmarshled = new FrameworkImplementation();
@@ -25,7 +24,7 @@ public class TestRunnerTestng {
 		unmarshled.setTestEnvironment(EnvironmentName.STAGE);
 		unmarshled.setTestFeature("loginTestngUI.xml");
 		unmarshled.setTestProject("TestngProject");
-		unmarshled.setTestSystem(SystemType.MAC);
+		unmarshled.setTestSystem(SystemType.WINDOWS);
 		unmarshled.setTestType(TestingTypes.UI);
 		unmarshled.setTestTypeFrame(TestingFrame.UI_TESTING_WITH_SELENIUM);
 		unmarshled.setFrameworkName(FrameworkName.TESTNG);

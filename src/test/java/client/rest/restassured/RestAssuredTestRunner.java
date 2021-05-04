@@ -12,10 +12,10 @@ import testinit.GlobalVariables.FrameworkName;
 import testinit.GlobalVariables.TestingFrame;
 import testinit.GlobalVariables.TestingTypes;
 
-public class RestAssuredRunner {
+public class RestAssuredTestRunner {
 	
-	@Test
-	public void runner() throws IOException {
+	public static void main(String[] args) throws IOException {
+		
 		TestDriver myTestDriver = new TestDriver();
 
 		FrameworkUnmarshled unmarshled = new FrameworkImplementation();
